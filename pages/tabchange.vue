@@ -4,11 +4,7 @@
 	  </div>
 	  <div class="body">
 		  <div class="tabs-container">
-			  <div class="tabs">
-				  <div class="tab" :class="{active : tabActiveIndex == 0}" @click="changeTab(0)">Speedy Bookmarking</div>
-				  <div class="tab" :class="{active : tabActiveIndex == 1}"  @click="changeTab(1)">Speedy Searching</div>
-				  <div class="tab" :class="{active : tabActiveIndex == 2}"  @click="changeTab(2)">Easy Sharing</div>
-			  </div>
+			  <TabIndex @tabchange="changeTab($event)" />
 		  </div>
 			<div class="tab-contents">
 				<div class="tab-content" v-show="tabActiveIndex == 0">
@@ -41,7 +37,11 @@
 </template>
 
 <script>
+import TabIndex from "~/components/TabIndex.vue";
 export default {
+	components: {
+		TabIndex
+	},
 	data() {
 		return {
 			tabActiveIndex: 0
@@ -55,7 +55,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
 * {
 	box-sizing: border-box;
